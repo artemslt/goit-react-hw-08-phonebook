@@ -24,6 +24,12 @@ export class App extends Component {
   };
 
   addContactsFromForm = (values, actions) => {
+    const newContact = {
+      id: nanoid(),
+      name: values.name,
+      number: values.number,
+    };
+
     if (
       this.state.contacts.find(
         contact => contact.name.toLowerCase() === values.name.toLowerCase()
@@ -33,13 +39,7 @@ export class App extends Component {
       return;
     }
 
-    this.setState(({ contacts }) =>
-      contacts.push({
-        id: nanoid(),
-        name: values.name,
-        number: values.number,
-      })
-    );
+    this.setState(({ contacts }) => ({ contacts: [...contacts, newContact] }));
     actions.setSubmitting(false);
     actions.resetForm();
   };
