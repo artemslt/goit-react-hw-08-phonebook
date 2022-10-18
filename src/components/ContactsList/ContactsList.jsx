@@ -21,9 +21,9 @@ export const ContactList = ({ renderList, deleteContact }) => {
 ContactList.propTypes = {
   renderList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ),
   deleteContact: PropTypes.func.isRequired,

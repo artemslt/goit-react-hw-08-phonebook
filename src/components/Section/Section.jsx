@@ -13,6 +13,6 @@ export const SectionWrapper = ({ title, children }) => {
 };
 
 SectionWrapper.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.node.isRequired,
 };

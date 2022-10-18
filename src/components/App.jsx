@@ -9,14 +9,23 @@ import { AppWrapper } from './AppWrapper/AppWrapper';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
+  componentDidMount() {
+    const ls = JSON.parse(localStorage.getItem('contacts'));
+    console.log('first', ls);
+    this.setState({ contacts: ls });
+    console.log('this :>> ', this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('object :>> ', 'object');
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      console.log('3', 3);
+    }
+  }
 
   handleChange = e => {
     e.preventDefault();
@@ -46,12 +55,9 @@ export class App extends Component {
 
   deleteContact = e => {
     console.log('first', e.target.id);
-    this.setState(
-      this.state.contacts.splice(
-        this.state.contacts.findIndex(contact => contact.id === e.target.id),
-        1
-      )
-    );
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.id !== e.target.id),
+    }));
   };
 
   listToRender = () => {
