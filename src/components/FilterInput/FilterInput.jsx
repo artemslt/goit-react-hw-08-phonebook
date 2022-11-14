@@ -1,15 +1,18 @@
-import PropTypes from 'prop-types';
 import { WrapperFilter } from './FilterInput.styled';
+import { addFilterValue } from '../../redux/filterSlice';
 
-export const FilterInput = ({ handleChange }) => {
+import { useDispatch } from 'react-redux';
+
+export const FilterInput = () => {
+  const dispatch = useDispatch();
+
+  const handleChange = e => {
+    dispatch(addFilterValue(e.target.value));
+  };
   return (
     <WrapperFilter>
       Find contacts by name
       <input type="text" name="filter" onChange={handleChange} />
     </WrapperFilter>
   );
-};
-
-FilterInput.propTypes = {
-  handleChange: PropTypes.func.isRequired,
 };
