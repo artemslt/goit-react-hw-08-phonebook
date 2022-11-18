@@ -12,7 +12,12 @@ export const FilterInput = () => {
   return (
     <WrapperFilter>
       Find contacts by name
-      <input type="text" name="filter" onChange={handleChange} />
+      <input
+        type="text"
+        name="filter"
+        onChange={handleChange}
+        autoComplete="off"
+      />
     </WrapperFilter>
   );
 };

@@ -1,14 +1,13 @@
-import PropTypes from 'prop-types';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { Form, SubmitButton, Wrapper } from './Form.styled';
 import { contactsShema } from '../Validation';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
-import { getContacts } from '../../redux/selectors';
+import { addContact } from '../../redux/operations';
+import { selectContacts } from '../../redux/selectors';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contactsList = useSelector(getContacts);
+  const contactsList = useSelector(selectContacts);
 
   const addContactsFromForm = (values, actions) => {
     if (
@@ -29,7 +28,7 @@ export const ContactForm = () => {
     <Formik
       initialValues={{
         name: '',
-        number: '',
+        phone: '',
       }}
       onSubmit={addContactsFromForm}
       validationSchema={contactsShema}
@@ -37,20 +36,16 @@ export const ContactForm = () => {
       <Form>
         <Wrapper>
           Name
-          <Field name="name" />
+          <Field name="name" autoComplete="off" />
           <ErrorMessage name="name" component="span" />
         </Wrapper>
         <Wrapper>
           Phone number
-          <Field name="number" />
-          <ErrorMessage name="number" component="span" />
+          <Field name="phone" autoComplete="off" />
+          <ErrorMessage name="phone" component="span" />
         </Wrapper>
         <SubmitButton type="submit">Submit</SubmitButton>
       </Form>
     </Formik>
   );
-};
-
-ContactForm.protoType = {
-  addContactsFromForm: PropTypes.func.isRequired,
 };
