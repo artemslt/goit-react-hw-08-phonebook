@@ -1,5 +1,5 @@
 import { WrapperFilter } from './FilterInput.styled';
-import { addFilterValue } from '../../redux/filterSlice';
+import { addFilterValue } from '../../redux/filter/slice';
 
 import { useDispatch } from 'react-redux';
 
