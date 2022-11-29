@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[266],{1266:function(e,n,t){t.r(n);var o=t(476),c=t(3793),a=t(6015),i=t(2812),s=t(3329);n.default=function(){return(0,s.jsxs)(o.Z,{component:"main",children:[(0,s.jsx)(c.ZP,{}),(0,s.jsx)(a.Z,{sx:{marginTop:8,display:"flex",flexDirection:"column",alignItems:"center"},children:(0,s.jsx)(i.Z,{component:"h1",variant:"h4",children:"This App was created to facilitate the storage of contacts."})})]})}}}]);
+//# sourceMappingURL=266.d2c50bd6.chunk.js.map
