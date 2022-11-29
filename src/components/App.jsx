@@ -4,6 +4,9 @@ import { Layout } from './Layout';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+
 const HomePage = lazy(() => import('../pages/Home'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 const LogInPage = lazy(() => import('../pages/LogIn'));
@@ -23,44 +26,28 @@ export const App = () => {
     <Routes>
       <Route path={'/'} element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="/login" element={<LogInPage />} />
-        <Route path="/registration" element={<RegistrationPage />} />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LogInPage />} />
+          }
+        />
+        <Route
+          path="/registration"
+          element={
+            <RestrictedRoute
+              redirectTo="/tasks"
+              component={<RegistrationPage />}
+            />
+          }
+        />
       </Route>
     </Routes>
   );
 };
-
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchContacts } from 'redux/contacts/operations';
-// import { ContactList } from './ContactsList/ContactsList';
-// import { SectionWrapper } from './Section/Section';
-// import { ContactForm } from './Form/Form';
-// import { FilterInput } from './FilterInput/FilterInput';
-// import { AppWrapper } from './AppWrapper/AppWrapper';
-// import { selectIsLoading, selectError } from '../redux/contacts/selectors';
-
-// export const App = () => {
-//   const dispatch = useDispatch();
-//   const isLoading = useSelector(selectIsLoading);
-//   const error = useSelector(selectError);
-
-//   useEffect(() => {
-//     dispatch(fetchContacts());
-//   }, [dispatch]);
-
-//   return (
-//     <AppWrapper title="Phonebook">
-//       <SectionWrapper>
-//         <ContactForm />
-//         <FilterInput />
-//       </SectionWrapper>
-
-//       <SectionWrapper title="Contacts">
-//         {isLoading && !error && <b>Loading......</b>}
-//         <ContactList />
-//       </SectionWrapper>
-//     </AppWrapper>
-//   );
-// };

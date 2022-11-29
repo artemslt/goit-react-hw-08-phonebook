@@ -7,7 +7,11 @@ Yup.addMethod(Yup.string, 'numeric', function () {
   );
 });
 
-export const contactsShema = Yup.object({
+const contactsShema = Yup.object({
   name: Yup.string().required(),
   phone: Yup.string().numeric().required(),
 });
+
+export const shema = () => {
+  return contactsShema;
+};
