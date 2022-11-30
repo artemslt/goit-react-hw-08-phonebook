@@ -10,7 +10,7 @@ import { UserMenu } from './AppNavigation/UserMenu';
 import { AppMenu } from './AppNavigation/AppBar';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
-import { ParticlesLines } from './Particles/Particles';
+import { ParticlesLines } from '../components/Particles/Particles';
 
 export const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -32,6 +32,7 @@ export const Layout = () => {
             </Toolbar>
           </Container>
         </AppBar>
+
         <Suspense>
           <ParticlesLines />
 

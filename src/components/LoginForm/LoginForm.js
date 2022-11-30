@@ -31,14 +31,13 @@ export const LoginForm = () => {
     },
   });
   return (
-    <Container component="main" maxWidth="xs">
+    <Container maxWidth="xs">
       <CssBaseline />
       <Box
         sx={{
           backgroundColor: 'primary.light',
           padding: 2,
           borderRadius: 2,
-          marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

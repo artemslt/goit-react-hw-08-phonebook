@@ -2,7 +2,7 @@ import { Button, styled } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 export const NavButton = styled(Button)(({ theme }) => ({
-  my: 2,
+  textAlign: 'center',
   color: theme.palette.text.primary,
   display: 'block',
   position: 'relative',

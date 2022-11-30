@@ -1,8 +1,10 @@
 import { Container, CssBaseline, Box, Typography } from '@mui/material';
+
 const Home = () => {
   return (
     <Container component="main">
       <CssBaseline />
+
       <Box
         sx={{
           marginTop: 8,
